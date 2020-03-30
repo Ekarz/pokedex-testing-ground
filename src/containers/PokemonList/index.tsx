@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PokemonPresentation } from '../../types';
 import { fetchAllPokemon } from '../../repository/pokemon';
+import capitalize from 'lodash/capitalize';
 
 const PokemonList: React.FC = () => {
     const [pokemonList, setPokemonList] = useState<Array<PokemonPresentation>>([]);
@@ -12,7 +13,7 @@ const PokemonList: React.FC = () => {
         <div className="PokemonList">
             <ul>
                 {pokemonList.map(({ name }) => (
-                    <li key={name}>{name}</li>
+                    <li key={name}>{capitalize(name)}</li>
                 ))}
             </ul>
         </div>
