@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './index.scss';
-import { Pokemon, PokemonSpecies } from '../../types';
+import { Pokemon } from '../../types';
 import { fetchAllPokemon } from '../../repository/pokemon';
 import capitalize from 'lodash/capitalize';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { refreshPokemon } from '../../store/pokemon';
 
 type Props = {
     selected: Pokemon | null;
@@ -10,10 +13,12 @@ type Props = {
 };
 
 const PokemonList: React.FC<Props> = ({ selected, setSelected }: Props) => {
-    const [pokemonList, setPokemonList] = useState<Array<PokemonSpecies>>([]);
+    const dispatch = useDispatch();
+
+    const pokemonList = useSelector((state: RootState) => state.pokemon);
     useEffect(() => {
-        fetchAllPokemon().then(setPokemonList);
-    }, []);
+        fetchAllPokemon().then((res) => dispatch(refreshPokemon(res)));
+    }, [dispatch]);
 
     const handlePokemonClick = async (url: string): Promise<void> => {
         const response = await fetch(url);
