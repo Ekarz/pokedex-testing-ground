@@ -1,0 +1,25 @@
+.PokemonInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ul {
+        display: flex;
+        flex-direction: column-reverse;
+
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center;
+
+            .stat-title {
+                width: 180px;
+            }
+
+            > * {
+                margin: 5px;
+            }
+        }
+    }
+}

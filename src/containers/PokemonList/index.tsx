@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './index.scss';
-import { Pokemon, PokemonPresentation } from '../../types';
+import { Pokemon, PokemonSpecies } from '../../types';
 import { fetchAllPokemon } from '../../repository/pokemon';
 import capitalize from 'lodash/capitalize';
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const PokemonList: React.FC<Props> = ({ selected, setSelected }: Props) => {
-    const [pokemonList, setPokemonList] = useState<Array<PokemonPresentation>>([]);
+    const [pokemonList, setPokemonList] = useState<Array<PokemonSpecies>>([]);
     useEffect(() => {
         fetchAllPokemon().then(setPokemonList);
     }, []);
