@@ -1,9 +1,18 @@
 .App {
     display: flex;
+    justify-content: space-between;
 
     width: 100vw;
     height: 100vh;
 
     background-image: url("resources/images/background.jpg");
     background-color: transparent;
+
+    .PokemonList {
+        width: 20%;
+    }
+
+    .PokemonInfo {
+        width: 70%;
+    }
 }
