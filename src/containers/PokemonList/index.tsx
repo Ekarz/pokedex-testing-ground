@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './index.scss';
 import { PokemonPresentation } from '../../types';
 import { fetchAllPokemon } from '../../repository/pokemon';
 import capitalize from 'lodash/capitalize';
