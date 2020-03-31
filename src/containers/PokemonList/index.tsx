@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import './index.scss';
 import { Pokemon } from '../../types';
-import { fetchAllPokemon } from '../../repository/pokemon';
 import capitalize from 'lodash/capitalize';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import { refreshPokemon } from '../../store/pokemon';
+import { fetchPokemonList } from '../../store/pokemon';
 
 type Props = {
     selected: Pokemon | null;
@@ -17,7 +16,7 @@ const PokemonList: React.FC<Props> = ({ selected, setSelected }: Props) => {
 
     const pokemonList = useSelector((state: RootState) => state.pokemon);
     useEffect(() => {
-        fetchAllPokemon().then((res) => dispatch(refreshPokemon(res)));
+        dispatch(fetchPokemonList());
     }, [dispatch]);
 
     const handlePokemonClick = async (url: string): Promise<void> => {
